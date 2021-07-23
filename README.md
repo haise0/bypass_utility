@@ -9,7 +9,7 @@ optional arguments:
   -h, --help              show this help message and exit
   -c CONFIG, --config CONFIG
                           Device configuration file (default is default_config.json5)
-  -t, --test              Testmode
+  -t, --test              Test mode: tests whether the exploit will or will not work.
   -w WATCHDOG, --watchdog WATCHDOG
                           Watchdog address(in hex)
   -u UART, --uart UART    UART base address(in hex)
@@ -27,43 +27,36 @@ optional arguments:
                           Method to use for crashing preloader (0, 1, 2)
 ```
 
-## Installation on Linux:
-Note: I don't plan on widely supporting Windows instructions as well. Using powershell the same commands with basic syntax changes like / to \ should work just fine. Feel free to make a pull request that details it further.
+## Installation
+Note: I don't plan on widely supporting Windows-specific instructions. Using powershell the same commands with basic syntax changes like / to \ should work just fine. Feel free to make a pull request that details it further.
 
 Grab the repository:
 ```
 git clone https://github.com/haise0/bypass_utility
 ```
 
-The default folder for the script to find the payloads in is just called "payloads" underneath the main directory. This conflicts with the original payloads branch, which is called "exploits_collection." Clone the repository under the mtk_bypass folder and name it "payloads" with:
+The script's default path variables have been changed for the configuration file and payloads folder, so it now works as soon as you have the exploits collection cloned under the main directory. Clone the repository under the mtk_bypass folder:
 ```
 cd bypass_utility
-git clone https://github.com/MTK-bypass/exploits_collection payloads
+git clone https://github.com/MTK-bypass/exploits_collection 
 ```
 
-The default configuration file will be under `payloads/default_config.json5`. In the mtk_bypass folder, copy it:
-`cp payloads/default_config.json5 .`
+If you've already done the setup steps, you're good to go and can run the python script.
 
+If you haven't, move on to the following steps to finish the steps for setting up depending, on your operating system.
 
-## Payloads from the Original Branch:
-https://github.com/MTK-bypass/exploits_collection
-
-## Usage on Windows
-Skip steps 1-5 after first usage
+## Setup on Windows
+Skip steps 1-5 are only required for first usage.
 
 1. Install [python](https://www.python.org/downloads) and make sure to select "Add Python X.X to PATH."
 2. Install [libusb-win32](https://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases/1.2.6.0/libusb-win32-devel-filter-1.2.6.0.exe/download)
-3. Launch filter wizard, click next
+3. Launch the filter wizard and click next to install a device driver filter.
 4. Connect powered off phone with volume+ button, you should see new serial device in the list. Select and install its filter. On LGE devices, at least the Stylo 6, it will only show for about one second before disappearing again, so you will have to be relatively fast.
-6. Install python dependencies:
+5. Install python dependencies:
 ```
 sudo pip install -r requirements.txt
 ```
-6. Run this command and connect your powered off phone with volume+ button, you should get "Protection disabled" at the end
-```
-python main.py
-```
-7. After that, without disconnecting phone, run SP Flash Tool
+6. After that, without disconnecting phone, run SP Flash Tool
 
 
 ## Usage on Linux
