@@ -1,5 +1,49 @@
 # Bypass utility
-Small utility to disable bootrom protection(sla and daa)
+Small utility to disable bootrom protection (SLA and DA).
+
+## Usage:
+```
+python main.py [-h] [-c CONFIG] [-t] [-w WATCHDOG] [-u UART] [-v VAR_1] [-a PAYLOAD_ADDRESS] [-p PAYLOAD] [-s SERIAL_PORT] [-f] [-n] [-m CRASH_METHOD]
+
+optional arguments:
+  -h, --help              show this help message and exit
+  -c CONFIG, --config CONFIG
+                          Device configuration file (default is default_config.json5)
+  -t, --test              Testmode
+  -w WATCHDOG, --watchdog WATCHDOG
+                          Watchdog address(in hex)
+  -u UART, --uart UART    UART base address(in hex)
+  -v VAR_1, --var_1 VAR_1
+                          var_1 value(in hex)
+  -a PAYLOAD_ADDRESS, --payload_address PAYLOAD_ADDRESS
+                          payload_address value(in hex)
+  -p PAYLOAD, --payload PAYLOAD
+                          Payload to use
+  -s SERIAL_PORT, --serial_port SERIAL_PORT
+                          Connect to existing serial port
+  -f, --force             Force exploit on insecure device
+  -n, --no_handshake      Skip handshake
+  -m CRASH_METHOD, --crash_method CRASH_METHOD
+                          Method to use for crashing preloader (0, 1, 2)
+```
+
+## Installation on Linux:
+Note: I don't plan on widely supporting Windows instructions as well. Using powershell the same commands with basic syntax changes like / to \ should work just fine. Feel free to make a pull request that details it further.
+
+Grab the repository:
+```
+git clone https://github.com/haise0/bypass_utility
+```
+
+The default folder for the script to find the payloads in is just called "payloads" underneath the main directory. This conflicts with the original payloads branch, which is called "exploits_collection." Clone the repository under the mtk_bypass folder and name it "payloads" with:
+```
+cd bypass_utility
+git clone https://github.com/MTK-bypass/exploits_collection payloads
+```
+
+The default configuration file will be under `payloads/default_config.json5`. In the mtk_bypass folder, copy it:
+`cp payloads/default_config.json5 .`
+
 
 ## Payloads from the Original Branch:
 https://github.com/MTK-bypass/exploits_collection
