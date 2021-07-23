@@ -9,8 +9,8 @@ from src.logger import log
 import argparse
 import os
 
-DEFAULT_CONFIG = "default_config.json5"
-PAYLOAD_DIR = "payloads/"
+DEFAULT_CONFIG = "exploits_collection/default_config.json5"
+PAYLOAD_DIR = "exploits_collection/payloads/"
 DEFAULT_PAYLOAD = "generic_dump_payload.bin"
 DEFAULT_DA_ADDRESS = 0x200D00
 
